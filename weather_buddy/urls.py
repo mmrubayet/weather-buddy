@@ -22,8 +22,8 @@ urlpatterns = [
     path('admin/', admin.site.urls),
     path("accounts/", include("allauth.urls")),
     # app urls
-    # path("api/v1/", include("API.urls")),
     path("", include("weathers.urls")),
+    path("api/v1/", include("API.urls")),
 ]
 
 if settings.DEBUG:
