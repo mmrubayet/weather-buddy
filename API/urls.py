@@ -1,7 +1,16 @@
 from django.urls import path
 
-from .views import DistrictView
+from . import views
 
 urlpatterns = [
-    path("districts/", DistrictView.as_view(), name="districts"),
+    path(
+        "districts/",
+        views.DistrictListCreateView.as_view(),
+        name="district_list_create"
+    ),
+    path(
+        "districts/<int:dist_id>",
+        views.DistrictRetrieveUpdateDestroyView.as_view(),
+        name="district_list_create"
+    ),
 ]

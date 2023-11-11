@@ -1,10 +1,10 @@
 from rest_framework import serializers
 
+from weathers.models import District
 
-class DistrictSerializer(serializers.Serializer):
-    id = serializers.IntegerField()
-    division_id = serializers.IntegerField()
-    name = serializers.CharField()
-    bn_name = serializers.CharField()
-    lat = serializers.CharField()
-    long = serializers.CharField()
+
+class DistrictSerializer(serializers.ModelSerializer):
+
+    class Meta:
+        model = District
+        exclude = ["id"]

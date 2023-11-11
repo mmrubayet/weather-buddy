@@ -1,7 +1,10 @@
 
-from .district import DistrictView
+from .district import (
+    DistrictListCreateView, DistrictRetrieveUpdateDestroyView
+)
 
 
 __all__ = [
-    DistrictView
+    DistrictListCreateView,
+    DistrictRetrieveUpdateDestroyView,
 ]

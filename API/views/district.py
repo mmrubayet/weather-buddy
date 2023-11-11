@@ -1,25 +1,20 @@
-import os
-import json
 
-from django.conf import settings
-from django.http import JsonResponse
-
-from rest_framework.views import APIView
-from rest_framework.response import Response
-
+from rest_framework.generics import (
+    ListCreateAPIView, RetrieveUpdateDestroyAPIView
+)
 
 from API.serializers import DistrictSerializer
+from weathers.models import District
 
 
-class DistrictView(APIView):
+class DistrictListCreateView(ListCreateAPIView):
 
-    def get(self, request):
-        static_file_path = os.path.join(
-            settings.STATIC_ROOT, 'data/bd-districts.json'
-        )
+    queryset = District.objects.all()
+    serializer_class = DistrictSerializer
 
-        # Load data from the JSON file
-        with open(static_file_path) as f:
-            district = json.load(f)
-        return JsonResponse(district)
-        
+
+class DistrictRetrieveUpdateDestroyView(RetrieveUpdateDestroyAPIView):
+
+    queryset = District.objects.all()
+    serializer_class = DistrictSerializer
+    lookup_field = "dist_id"
