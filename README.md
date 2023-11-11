@@ -46,7 +46,7 @@ python manage.py createsuperuser
 python manage.py runserver
 ```
 
-### Run flake8 and isort . --interactive before commit:
+### Run flake8 before commit:
 
 ```commandline
 flake8
