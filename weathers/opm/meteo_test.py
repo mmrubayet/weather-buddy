@@ -1,7 +1,10 @@
 import openmeteo_requests
 
 import requests_cache
+
 import pandas as pd
+import numpy as np
+
 from retry_requests import retry
 
 # Setup the Open-Meteo API client with cache and retry on error
@@ -47,7 +50,26 @@ def get_hour_temp(latitude, longitude):
         ),
         "temperature_2m": hourly_temperature_2m}
 
-    hourly_dataframe = pd.DataFrame(data=hourly_data)
-    print(hourly_dataframe)
+    hdf = pd.DataFrame(data=hourly_data)
 
-    return hourly_dataframe
+    # Extract data from the JSON response
+    dates = pd.to_datetime(hdf["date"], format="%Y-%m-%dT%H:%M:%S")
+    temperature_2m = np.array(hdf["temperature_2m"])
+
+    # Create a DataFrame
+    hourly_data = {"date": dates, "temperature_2m": temperature_2m}
+    hourly_df = pd.DataFrame(data=hourly_data)
+
+    # Filter the DataFrame for entries where the time is 2:00 PM
+    filtered_df = hourly_df[hourly_df['date'].dt.hour == 14]
+    result_dict = dict(
+        zip(
+            filtered_df['date'].dt.day,
+            filtered_df['temperature_2m']
+        )
+    )
+
+    # Print the filtered DataFrame
+    print(result_dict)
+
+    return result_dict
