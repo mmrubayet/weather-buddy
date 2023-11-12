@@ -33,6 +33,24 @@ cp .env.example .env
 python manage.py migrate
 ```
 
+#### Import District Data:
+
+```commandline
+python manage.py collectstatic
+```
+```commandline
+python manage.py shell
+```
+Inside shell:
+```commandline
+from utilities import import_districts
+```
+```commandline
+import_districts()
+```
+```commandline
+exit()
+```
 
 #### Create a superuser:
 
