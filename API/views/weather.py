@@ -3,22 +3,20 @@ from rest_framework.views import APIView, Response
 
 from weathers.models import District
 
-from weathers.opm import get_hour_temp
+from weathers.helpers import get_temperature
 
 
-class CoolWeather(APIView):
+class CoolWeather7d64D(APIView):
 
     def get(self, request, format=None):
 
         obj_list = list(District.objects.values_list(
             "name", "lat", "long"
         ))
-        temp_list = list()
-
+        lat = list()
+        long = list()
         for obj in obj_list:
-            temp = dict()
-            temp["district"] = obj[0]
-            temp["temp"] = get_hour_temp(obj[1], obj[2])
-            temp_list.append(temp)
-
+            lat.append(float(obj[1]))
+            long.append(float(obj[2]))
+        temp_list = get_temperature(lat, long)
         return Response(temp_list, status=200)
