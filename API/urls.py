@@ -19,12 +19,12 @@ urlpatterns = [
         name="cool_ten"
     ),
     path(
-        "weather/temp7d64D/",
+        "districts/weather/temperature/",
         views.Weather7d64D.as_view(),
-        name="temp7d64D"
+        name="districts_temperature"
     ),
     path(
-        "weather/cool-ten/",
+        "districts/weather/cool-ten/",
         views.CoolWeatherTopTen.as_view(),
         name="cool_ten"
     ),
