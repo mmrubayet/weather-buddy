@@ -1,6 +1,6 @@
-
 import numpy as np
 import pandas as pd
+import requests
 
 from .meteo import open_meteo, url
 
@@ -15,8 +15,6 @@ def get_response(latitude, longitude, date=None):
     if date:
         params["start_date"] = [date, date]
         params["end_date"] = [date, date]
-
-    # print(params)
 
     responses = open_meteo.weather_api(url, params=params)
 
@@ -62,3 +60,30 @@ def parse_response(responses):
         result_obj.append(result_dict)
 
     return result_obj
+
+
+def get_response_for_compare(latitude, longitude, date):
+    params = {
+        "latitude": latitude,
+        "longitude": longitude,
+        "hourly": "temperature_2m",
+        "start_date": [date, date],
+        "end_date": [date, date]
+    }
+
+    response = requests.get(url, params=params)
+
+    if response.status_code == 200:
+        data = response.json()
+    else:
+        return False
+
+    return data
+
+
+def parse_response_compare(responses):
+
+    # Extracting temperature_2m data for 2PM
+    temperature_values = [entry["hourly"]["temperature_2m"][14] for entry in responses]  # noqa
+
+    return temperature_values

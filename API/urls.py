@@ -19,6 +19,11 @@ urlpatterns = [
         name="cool_ten"
     ),
     path(
+        "districts/travel/cool/rt/",
+        views.TravelToCoolRT.as_view(),
+        name="cool_ten_rt"
+    ),
+    path(
         "districts/weather/temperature/",
         views.Weather7d64D.as_view(),
         name="districts_temperature"

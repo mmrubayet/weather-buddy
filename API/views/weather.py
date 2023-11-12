@@ -1,8 +1,13 @@
 
 from rest_framework.views import APIView, Response
 
-from weathers.helpers import (compare_temperature, get_cool_ten_districts,
-                              get_temperature, is_valid_date)
+from weathers.helpers import (
+    compare_temperature,
+    compare_temperature_no_cache,
+    get_cool_ten_districts,
+    get_temperature,
+    is_valid_date,
+)
 from weathers.models import District
 
 
@@ -53,6 +58,9 @@ class TravelToCool(APIView):
     Returns the Desired is Cooler or Not.
     """
 
+    def get_data(self, district, lat, long, date):
+        return compare_temperature(district, lat, long, date)
+
     def get(self, request, format=None):
 
         from_id = request.query_params.get("from_id")
@@ -81,5 +89,20 @@ class TravelToCool(APIView):
         district = [current_location.name, desired_location.name]
         lat = [float(current_location.lat), float(desired_location.lat)]
         long = [float(current_location.long), float(desired_location.long)]
-        temp_list = compare_temperature(district, lat, long, date)
+
+        temp_list = self.get_data(district, lat, long, date)
+
         return Response(temp_list, status=200)
+
+
+class TravelToCoolRT(TravelToCool):
+    """
+    Takes Current and Desired Location with date and
+    Returns the Desired is Cooler or Not.
+    This does not use caching.
+    """
+
+    def get_data(self, district, lat, long, date):
+        return compare_temperature_no_cache(district, lat, long, date)
+
+    pass
