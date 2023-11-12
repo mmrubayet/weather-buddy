@@ -1,7 +1,6 @@
 
-from rest_framework.generics import (
-    ListCreateAPIView, RetrieveUpdateDestroyAPIView
-)
+from rest_framework.generics import (ListCreateAPIView,
+                                     RetrieveUpdateDestroyAPIView)
 
 from API.serializers import DistrictSerializer
 from weathers.models import District

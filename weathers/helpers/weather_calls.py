@@ -1,6 +1,6 @@
 
 from .meteo_response import get_response, parse_response
-from .utils import get_named_temp, get_average_temp, get_top_ten, get_day
+from .utils import get_average_temp, get_day, get_named_temp, get_top_ten
 
 
 def get_temperature(districts, latitude, longitude, date=None):
@@ -34,12 +34,12 @@ def compare_temperature(districts, latitude, longitude, date):
     day = get_day(date)
 
     if dt[districts[0]][day] < dt[districts[1]][day]:
-        decision = f"{districts[1]} is hot than you are in {districts[0]}. "\
-                   f"You should not go there."
+        decision = f"{districts[1]} is hotter than {districts[0]} "\
+                   f"you are in. You should not go there."
 
     elif dt[districts[0]][day] > dt[districts[1]][day]:
-        decision = f"{districts[1]} is cool than you are in {districts[0]}. "\
-                   "Go Enjoy!"
+        decision = f"{districts[1]} is cooler than {districts[0]} "\
+                   f"you are in. Go Enjoy!"
 
     elif dt[districts[0]][day] < dt[districts[1]][day]:
         decision = f"{districts[1]} is same as you are in {districts[1]}."

@@ -1,13 +1,11 @@
-import openmeteo_requests
-
-import requests_cache
-
-import pandas as pd
 import numpy as np
+import pandas as pd
 
+import openmeteo_requests
+import requests_cache
 from retry_requests import retry
 
-# Setup the Open-Meteo API client with cache and retry on error
+# Set up the Open-Meteo API client with cache and retry on error
 cache_session = requests_cache.CachedSession(
     '.cache', expire_after=3600
 )

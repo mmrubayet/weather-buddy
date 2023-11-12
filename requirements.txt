@@ -27,6 +27,7 @@ sqlparse==0.4.4
 typing_extensions==4.8.0
 urllib3==2.0.5
 whitenoise==6.5.0
+isort
 
 openmeteo-requests
 requests-cache

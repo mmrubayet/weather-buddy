@@ -1,19 +1,14 @@
 
 from rest_framework.views import APIView, Response
 
+from weathers.helpers import (compare_temperature, get_cool_ten_districts,
+                              get_temperature, is_valid_date)
 from weathers.models import District
-
-from weathers.helpers import (
-    get_temperature,
-    get_cool_ten_districts,
-    compare_temperature,
-    is_valid_date
-)
 
 
 class Weather7d64D(APIView):
     """
-    Returns Weather for 7 days 64 districts
+    Returns Temperature at 2PM for 7 days 64 districts.
     """
 
     def get(self, request, format=None):
@@ -35,7 +30,7 @@ class Weather7d64D(APIView):
 class CoolWeatherTopTen(APIView):
     """
     Returns Top Ten Cool Districts Based on Weather
-    for Next 7 Days of 64 Districts.
+    for an average of Next 7 Days at 2PM for 64 Districts.
     """
 
     def get(self, request, format=None):
@@ -55,7 +50,7 @@ class CoolWeatherTopTen(APIView):
 class TravelToCool(APIView):
     """
     Takes Current and Desired Location with date and
-    Returns is Cooler or Not.
+    Returns the Desired is Cooler or Not.
     """
 
     def get(self, request, format=None):
