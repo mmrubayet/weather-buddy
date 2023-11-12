@@ -14,9 +14,9 @@ urlpatterns = [
         name="district_retrieve_update_destroy"
     ),
     path(
-        "weather/cool7d64D/",
-        views.CoolWeather7d64D.as_view(),
-        name="cool_weather7d64D"
+        "weather/temp7d64D/",
+        views.Weather7d64D.as_view(),
+        name="temp7d64D"
     ),
     path(
         "weather/cool-ten/",

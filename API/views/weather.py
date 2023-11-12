@@ -6,7 +6,10 @@ from weathers.models import District
 from weathers.helpers import get_temperature, get_cool_ten_districts
 
 
-class CoolWeather7d64D(APIView):
+class Weather7d64D(APIView):
+    """
+    Returns Weather for 7 days 64 districts
+    """
 
     def get(self, request, format=None):
 
@@ -20,12 +23,14 @@ class CoolWeather7d64D(APIView):
             district.append(obj[0])
             lat.append(float(obj[1]))
             long.append(float(obj[2]))
-        temp_list = get_temperature(lat, long)
-        result_dict = dict(zip(district, temp_list))
-        return Response(result_dict, status=200)
+        temp_list = get_temperature(district, lat, long)
+        return Response(temp_list, status=200)
 
 
 class CoolWeatherTopTen(APIView):
+    """
+    Returns Top Ten Cool Districts Based on Weather for Next 7 Days of 64 Districts.
+    """
 
     def get(self, request, format=None):
 

@@ -1,5 +1,5 @@
 from .meteo_test import get_hour_temp
-from .hourly import get_temperature, get_cool_ten_districts
+from .weather_calls import get_temperature, get_cool_ten_districts
 
 
 __all__ = [
