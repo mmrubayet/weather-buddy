@@ -2,7 +2,7 @@
 from .district import (
     DistrictListCreateView, DistrictRetrieveUpdateDestroyView
 )
-from .weather import Weather7d64D, CoolWeatherTopTen
+from .weather import Weather7d64D, CoolWeatherTopTen, TravelToCool
 
 
 __all__ = [
@@ -10,4 +10,5 @@ __all__ = [
     DistrictRetrieveUpdateDestroyView,
     Weather7d64D,
     CoolWeatherTopTen,
+    TravelToCool
 ]

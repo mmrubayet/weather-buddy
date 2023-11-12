@@ -70,6 +70,6 @@ def get_hour_temp(latitude, longitude):
     )
 
     # Print the filtered DataFrame
-    print(result_dict)
+    # print(result_dict)
 
     return result_dict

@@ -1,3 +1,5 @@
+from datetime import datetime
+
 
 def get_named_temp(districts, temp_list):
     # Adds district name with temperature list
@@ -22,3 +24,19 @@ def get_top_ten(district_temp):
     )
 
     return cool_ten
+
+
+def is_valid_date(date_string, date_format='%Y-%m-%d'):
+    try:
+        datetime.strptime(date_string, date_format)
+        return True
+    except ValueError:
+        return False
+
+
+def get_day(date_string, date_format='%Y-%m-%d'):
+    try:
+        day = datetime.strptime(date_string, date_format)
+        return day.day
+    except ValueError:
+        return "Not a Valid Date"

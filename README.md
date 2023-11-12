@@ -59,8 +59,9 @@ isort . --interactive
 ### API Documentation:
 
 #### API Endpoints:
-| HTTP Verbs | Endpoints                  | Action                                         |
-|------------|----------------------------|------------------------------------------------|
-| GET        | /api/v1/weather/temp7d64D/ | Get temperature at 2pm for 7days all district. |
-| GET        | /api/v1/weather/cool-ten/  | Get top ten cool district at 2pm for 7days.    |
+| HTTP Verbs | Endpoints                                                         | Action                                         |
+|------------|-------------------------------------------------------------------|------------------------------------------------|
+| GET        | /api/v1/weather/temp7d64D/                                        | Get temperature at 2pm for 7days all district. |
+| GET        | /api/v1/weather/cool-ten/                                         | Get top ten cool district at 2pm for 7days.    |
+| GET        | /api/v1/districts/travel/cool/?from_id=1&to_id=60&date=2023-11-12 | Get top ten cool district at 2pm for 7days.    |
 | 

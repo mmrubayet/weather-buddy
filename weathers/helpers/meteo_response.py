@@ -5,13 +5,19 @@ import numpy as np
 from .meteo import open_meteo, url
 
 
-def get_response(latitude, longitude):
+def get_response(latitude, longitude, date=None):
     params = {
         "latitude": latitude,
         "longitude": longitude,
         "hourly": ["temperature_2m"]
     }
-    print(params)
+
+    if date:
+        params["start_date"] = [date, date]
+        params["end_date"] = [date, date]
+
+    # print(params)
+
     responses = open_meteo.weather_api(url, params=params)
 
     return responses
