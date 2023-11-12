@@ -55,3 +55,12 @@ flake8
 ```commandline
 isort . --interactive
 ```
+
+### API Documentation:
+
+#### API Endpoints:
+| HTTP Verbs | Endpoints                  | Action                                         |
+|------------|----------------------------|------------------------------------------------|
+| GET        | /api/v1/weather/cool7d64D/ | Get temperature at 2pm for 7days all district. |
+| GET        | /api/v1/weather/cool-ten/  | Get top ten cool district at 2pm for 7days.    |
+| 
