@@ -18,4 +18,9 @@ urlpatterns = [
         views.CoolWeather7d64D.as_view(),
         name="cool_weather7d64D"
     ),
+    path(
+        "weather/cool-ten/",
+        views.CoolWeatherTopTen.as_view(),
+        name="cool_ten"
+    ),
 ]

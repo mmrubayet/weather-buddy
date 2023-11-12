@@ -63,6 +63,40 @@ def parse_response(responses):
     return result_obj
 
 
+def get_named_temp(districts, temp_list):
+    return dict(zip(districts, temp_list))
+
+
 def get_temperature(latitude, longitude):
     responses = get_response(latitude, longitude)
     return parse_response(responses)
+
+
+def get_average_temp(district_temp):
+    # Convert to arrays from dict and average based on array count
+    average_temp = dict()
+    for district, temperatures in district_temp.items():
+        dts = list(temperatures.values())
+        average_temp[district] = sum(dts) / len(dts)
+
+    return average_temp
+
+
+def get_top_ten(district_temp):
+
+    sorted_data = dict(
+        sorted(district_temp.items(), key=lambda item: item[1])[:10]
+    )
+    cool_ten = sorted_data
+
+    return cool_ten
+
+
+def get_cool_ten_districts(districts, latitude, longitude):
+    temp_2pm_7d = get_temperature(latitude, longitude)
+    district_temp = get_named_temp(districts, temp_2pm_7d)
+    average_dist_temp = get_average_temp(district_temp)
+
+    top_ten_cool = get_top_ten(average_dist_temp)
+
+    return top_ten_cool
