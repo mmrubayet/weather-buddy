@@ -8,4 +8,73 @@
 
     <p class="lead">Weather Buddy</p>
 </div>
+<div class="row">
+    <div class="col-sm-1"></div>
+    <div class="col-sm-10 table-responsive ">
+
+        <table class="table table-responsive table-bordered table-striped">
+            <thead>
+                <tr>
+                    <th scope="col">#</th>
+                    <th scope="col">Method</th>
+                    <th scope="col">API</th>
+                    <th scope="col">Description</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <th scope="row">1</th>
+                    <td>GET</td>
+                    <td>
+                        <a href="/api/v1/districts/">/api/v1/districts/</a>
+                    </td>
+                    <td>List and Create district.</td>
+                </tr>
+                <tr>
+                    <th scope="row">2</th>
+                    <td>GET</td>
+                    <td>
+                        <a href="/api/v1/districts/&ltint:dist_id&gt/">/api/v1/districts/&ltint:dist_id&gt/</a>
+                    </td>
+                    <td>Retrieve, Update and Destroy district.</td>
+                </tr>
+                <tr>
+                    <th scope="row">3</th>
+                    <td>GET</td>
+                    <td>
+                        <a href="/api/v1/districts/weather/temperature/">/api/v1/districts/weather/temperature/</a>
+                    </td>
+                    <td>Returns Temperature at 2PM for 7 days 64 districts.</td>
+                </tr>
+                <tr>
+                    <th scope="row">4</th>
+                    <td>GET</td>
+                    <td>
+                        <a href="/api/v1/districts/weather/cool-ten/">/api/v1/districts/weather/cool-ten/</a>
+                    </td>
+                    <td>Returns Top Ten Cool Districts Based on Weather for an average of Next 7 Days at 2PM for 64 Districts.</td>
+                </tr>
+                <tr>
+                    <th scope="row">5</th>
+                    <td>GET</td>
+                    <td>
+                        <a href="/api/v1/districts/travel/cool/?from_id=1&to_id=60&date=2023-11-12">/api/v1/districts/travel/cool/?from_id=1&to_id=60&date=2023-11-12</a>
+                    </td>
+                    <td>Takes Current and Desired Location with date and Returns the Desired is Cooler or Not.</td>
+                </tr>
+                <tr>
+                    <th scope="row">6</th>
+                    <td>GET</td>
+                    <td>
+                        <a href="/api/v1/districts/travel/cool/rt/?from_id=1&to_id=60&date=2023-11-12">/api/v1/districts/travel/cool/rt/?from_id=1&to_id=60&date=2023-11-12</a>
+                    </td>
+                    <td>Takes Current and Desired Location with date and Returns the Desired is Cooler or Not. Without caching.</td>
+                </tr>
+            </tbody>
+        </table>
+
+    </div>
+
+    <div class="col-sm-1"></div>
+</div>
 {% endblock content %}
